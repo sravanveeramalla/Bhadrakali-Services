@@ -221,5 +221,38 @@
     <footer>
         <p>&copy; 2025 Bhadrakali Services. All rights reserved.</p>
     </footer>
+
+    <script>
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                targetElement.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
+<script>
+    document.querySelector('form').addEventListener('submit', function (e) {
+        e.preventDefault(); // Prevent actual form submission
+        alert('Thank you! Your message has been sent.');
+        this.reset(); // Reset the form fields
+    });
+</script>
+<script>
+    const testimonials = [
+        "Bhadrakali Services transformed our business with their exceptional solutions.",
+        "Outstanding support and quality services!"
+    ];
+    let current = 0;
+
+    function rotateTestimonials() {
+        const testimonialElement = document.querySelector('#testimonials p');
+        testimonialElement.textContent = testimonials[current];
+        current = (current + 1) % testimonials.length;
+    }
+
+    setInterval(rotateTestimonials, 3000); // Rotate every 3 seconds
+</script>    
 </body>
 </html>
